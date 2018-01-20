@@ -7,6 +7,7 @@ import CircularProgress from 'material-ui/CircularProgress';
 import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
+import { Link } from 'react-router-dom';
 
 class CreateEvent extends React.Component {
   constructor (props) {
@@ -25,7 +26,7 @@ class CreateEvent extends React.Component {
       locale: null,
       submitted: false
     }
-    
+
     this.handleEventNameChange = this.handleEventNameChange.bind(this);
     this.handleTimeChange = this.handleTimeChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -37,7 +38,7 @@ class CreateEvent extends React.Component {
     this.handleDeleteAttendee = this.handleDeleteAttendee.bind(this);
     this.setLocale = this.setLocale.bind(this);
   }
-  
+
   handleDeleteAttendee (attendee) {
     let deleteIndex = this.state.attendees.indexOf(attendee);
     this.state.attendees.splice(deleteIndex, 1);
@@ -90,7 +91,7 @@ class CreateEvent extends React.Component {
         delete infoToPost.organizerFirstName;
         delete infoToPost.organizerLastName;
         delete infoToPost.organizerPhoneNumber;
-        
+
         console.log('Submitting, contents of state:', infoToPost);
         axios.post('/event', this.state)
         .then((response) => this.props.history.push('/submit'))
@@ -153,11 +154,15 @@ class CreateEvent extends React.Component {
 
     return (
       <Paper style={style.paper} zDepth={2}>
-        <h1> WAYN </h1>
+        <Link to='/' style={{textDecoration: "none", "color": "#000"}}>
+          <h1>
+            <RaisedButton style={{"backgroundColor": "#FFF", "paddingLeft": "2%", "paddingRight": "2%", "paddingTop": "1%", "paddingBottom": "1%"}}>Wayn</RaisedButton>
+          </h1>
+        </Link>
         <h4> Event Details </h4>
         <form onSubmit={this.handleSubmit}>
         <TextField value={this.state.eventName} onChange={this.handleEventNameChange} required={true} floatingLabelText="Event name" style={style.textField} underlineShow={true} />
-          
+
           <label>
             Time:
             <input type="time" value={this.state.time} onChange={this.handleTimeChange} required/>
@@ -174,7 +179,7 @@ class CreateEvent extends React.Component {
           <TextField value={this.state.organizerFirstName} onChange={this.handleFirstNameChange} required={true} floatingLabelText="First name" style={style.textField} underlineShow={true} />
           <TextField value={this.state.organizerLastName} onChange={this.handleLastNameChange} required={true} floatingLabelText="Last name" style={style.textField} underlineShow={true} />
           <TextField value={this.state.organizerPhoneNumber} onChange={this.handlePhoneNumberChange} required={true} floatingLabelText="Phone number" style={style.textField} underlineShow={true} />
-          <RaisedButton type="submit" label="Create Event" onClick={this.handleSubmit} primary={true}/> 
+          <RaisedButton type="submit" label="Create Event" onClick={this.handleSubmit} primary={true}/>
           {this.state.submitted ? <CircularProgress /> : ''}
 
         </form>

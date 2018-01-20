@@ -29,7 +29,9 @@ class LandingPage extends React.Component {
     console.log('url??', x, response.picture.data)
     this.setState({facebook: response,
       img: response.picture.data.url,
-      userName: response.name})
+      userName: response.name,
+      name: response.name
+    }, () => {this.props.grabUrl(response.picture.data.url)})
   }
 
   handleUserNameChange(e) {
@@ -57,6 +59,7 @@ class LandingPage extends React.Component {
   }
 
   render () {
+    console.log('THIS IS MY PROOOOOPSSSSSSSSSSSSS', this.props)
     const style = {
       // height: 100,
       // width: 100,

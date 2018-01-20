@@ -12,14 +12,34 @@ import EventList from './components/EventList.jsx'
 class App extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      test: 'test',
+      imgUrl: ''
+    }
+    this.landingPageFactory = this.landingPageFactory.bind(this)
+    this.grabUrl = this.grabUrl.bind(this)
+  }
+
+  grabUrl(url) {
+    this.setState({
+      imgUrl: url
+    })
+  }
+
+
+  landingPageFactory() {
+    return(
+      <LandingPage testing={this.state.test} grabUrl={this.grabUrl} />
+      )
   }
 
   render () {
+    console.log('rthis is in the router state : ', this.state)
     return (
       <div style={{"padding": "30px", "textAlign": "center"}}>
         <main style={{"display": "inlineBlock", "padding": "50px"}}>
           <Switch>
-            <Route exact path="/" component={LandingPage}/>
+            <Route exact path="/" render={this.landingPageFactory}/>
             <Route exact path="/create" component={CreateEvent}/>
             <Route exact path="/event/:number/:userName" component={EventMap}/>
             <Route exact path="/submit" component={LoadingPage}/>

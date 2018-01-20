@@ -153,7 +153,7 @@ class EventMap extends React.Component {
       <Paper style={style.paper} zDepth={2}>
         <Link to='/' style={{textDecoration: "none", "color": "#000"}}>
           <h1>
-            <RaisedButton style={{"backgroundColor": "#FFF", "paddingLeft": "3%", "paddingRight": "3%", "paddingTop": "2%", "paddingBottom": "2%"}}>Wayn</RaisedButton>
+            <RaisedButton style={{"backgroundColor": "#FFF", "paddingLeft": "2%", "paddingRight": "2%", "paddingTop": "1%", "paddingBottom": "1%"}}>Wayn</RaisedButton>
           </h1>
         </Link>
         <h4> Your Event </h4>

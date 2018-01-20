@@ -33,7 +33,7 @@ class EventItem extends React.Component {
               } else {
                 return (
                   <div style={{"textAlign": "left"}} key={key}>
-                    <CardHeader style={{"width": "100%"}} avatar="" title={item.firstName + ' ' + item.lastName + ' | ' + item.phoneNumber}></CardHeader>
+                    <CardHeader style={{"width": "100%"}} avatar="https://marriedwiki.com/uploads/bio/gangsta-grandma.jpg" title={item.firstName + ' ' + item.lastName + ' | ' + item.phoneNumber}></CardHeader>
                   </div>
                 )
               }
